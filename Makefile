@@ -85,7 +85,7 @@ docker-push: docker-login ## Push the container
 docker-run: docker-build ## Build and run the container
 	@echo "+ $@"
 	docker run -i -t -v $(PWD):/host \
-		$(REPO):$(GITCOMMIT) --help
+		$(REPO):$(GITCOMMIT) --version
 
 .PHONY: bump-version
 BUMP := patch

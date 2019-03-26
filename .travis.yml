@@ -3,12 +3,12 @@ sudo: false
 services:
 - docker
 
-#env:
-#  global:
-#  # DOCKER_USER
-#  - secure:
-#  # DOCKER_PASS
-#  - secure:
+env:
+  global:
+  # DOCKER_USER
+  - secure: bHwuf4g3dtRTCTadYT20wX+RzLe577kqGMYv64NQpiu7YtjA1amxvqvYEcZpCVhJtu1xvltBLPZXPheA2+YdkLgiYXsoDP4Dsx+yW54ECOsJql7H3jrR/AtgG5HxTyN3mJdBmY/7yr9QOK5+fYGuAwWt7upMjAStTFLP3oyoR5bv9rCQJzf4Umj1e5ejLAXMTDpd4av/zwafG0HaFlQ5gSr3XRgA2wE9zqddzShEMzK3+eLe5Ml2NpDulmOV8jBxf7pQM3MVGIA+pa6viqlNG0adpV83zTmY/rkfs4U/avfwodmmc1ZBZ3Y4ItzayMyx8aOHOlsBNeWlfgBnNb/FzpwtrEPjMOyD7x51V1U945NzGx2RIFEcMDwZp1MuaXWgulakwHoOU8I3mfQB7uwuMtgWorG/bCghe9KUOVXohiLcghQi0UAzKB54zEXCtoNEhht+tyEDj4yDr4TRP9n/ZFt1SKPejuphoXgdyDkgjcSC1kS2R0mKfv50rNffB/Jhc68teHhyAHeqSTAwvOdG67mq1qAR4oxtpidkkGLgHHwyjxkALYYgL6ezIybb6XU2dChl3HJAVG+/d+nOR26LSqYllbBazZNT+xJlIWwTlCptAHWwvm0ehZje6ImWjqDWf7PPNm/2JeZ6dobuSU7OVF9lilS5esEjVc7OHQL/kik=
+  # DOCKER_PASS
+  - secure: sW+8K3Vbq3OfawKIAdfx08lRFFdstSj/eJosKkUyGbST/Thvdr5/vdf1pHY/LSWlo2u9+3injw+Jr+2H0mER4GCLTR7hSMnBABUoD9F9cJ4uKBNVKgkvW1S4R3TBeZAik1b4TGNfQ2CEtyH+Z35u6DhItljfurAspM154t2iHc+NpYQX2Tm30YpR4uQfDxfQR12DRD5iz65JYv3tZT3doI/NDdBj3jY5xNOc/4DHEDhfas8pj0JlreFzeO7ptlEYrYDZEA7li86fpDSpmRNMO7/FKVpSq2LGIhW8zhUCck7iVLPu8koArP91+Jl4oqefcXwpaonwk93HZ7yCi5Khk1+8g5BulfvRvN2xAQ4oxsuQ69AzCd+AliClSuxt7uizDWqi8KcylY0isdkF2M0EoiWiJ0tOgNMmFFa9l7XIv6KC+I8EISY24430ocO5rkACUGABQQIDlYufFE3BTJ1HRZ93TUmG1+5yIDV/xr/9HyGTXM+rRoFRVUEKOdF9Y5QLe1j3S4IOJ4+dchQ7PfAA/hFnrNnjpEbnsOopv0/kgED/F2j8RQXfF0LmtnX7TY/sMS/ELtSzcxicti90gyO3bp+ehS4XGusftdKO3UKvZahvQqR2MFWIgYZHgdpzHR/JCnVyGZOnk6ui3eL3eM0NeIQMmkngnP6H3xdVQAEUtxI=
 
 matrix:
   fast_finish: true
@@ -17,10 +17,7 @@ before_install:
 - make init
 
 script:
-- make verify
-
-before_deploy:
-- make docker-build docker-images
+- make verify docker-build docker-images docker-run
 
 deploy:
 - provider: script
