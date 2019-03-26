@@ -1,0 +1,32 @@
+sudo: false
+
+services:
+- docker
+
+#env:
+#  global:
+#  # DOCKER_USER
+#  - secure:
+#  # DOCKER_PASS
+#  - secure:
+
+matrix:
+  fast_finish: true
+
+before_install:
+- make init
+
+script:
+- make verify
+
+before_deploy:
+- make docker-build docker-images
+
+deploy:
+- provider: script
+  skip_cleanup: true
+  script:
+  - make -e docker-login docker-push
+  on:
+    repo: VirtusLab/runscope-agent
+    tags: true
